@@ -1,0 +1,6 @@
+# 本地直连模式：不依赖 Nacos
+spring:
+  cloud:
+    nacos:
+      discovery:
+        enabled: false

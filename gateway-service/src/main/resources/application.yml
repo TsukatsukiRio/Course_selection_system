@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/api/course/**
+        - id: selection-service
+          uri: lb://selection-service
+          predicates:
+            - Path=/api/selection/**
+        - id: recommend-service
+          uri: lb://recommend-service
+          predicates:
+            - Path=/api/recommend/**
+        - id: statistics-service
+          uri: lb://statistics-service
+          predicates:
+            - Path=/api/statistics/**
+
+jwt:
+  secret: smart-campus-course-selection-jwt-secret-2026-xwt
+  expire-hours: 24
+
+logging:
+  level:
+    com.smartcampus: info

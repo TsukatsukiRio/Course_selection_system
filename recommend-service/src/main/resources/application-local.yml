@@ -1,0 +1,16 @@
+# 本地直连模式：不依赖 Nacos，使用 SimpleDiscoveryClient 解析服务地址
+spring:
+  cloud:
+    nacos:
+      discovery:
+        enabled: false
+    discovery:
+      client:
+        simple:
+          instances:
+            user-service:
+              - uri: http://localhost:8081
+            course-service:
+              - uri: http://localhost:8082
+            selection-service:
+              - uri: http://localhost:8083
